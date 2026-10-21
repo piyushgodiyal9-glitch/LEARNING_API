@@ -1,4 +1,4 @@
-package in.forweb2.learning_api;
+package in.forweb2.learning_api.TaskData;
 
 import in.forweb2.learning_api.dto.TaskRequestdto;
 import in.forweb2.learning_api.dto.TaskResponsedto;

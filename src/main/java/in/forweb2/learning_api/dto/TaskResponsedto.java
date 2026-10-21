@@ -5,6 +5,16 @@ public class TaskResponsedto {
     private Long id;
     private String title;
     private boolean completed;
+    private long userId;
+
+    public TaskResponsedto() {
+    }
+
+    public TaskResponsedto(Long id, String title, boolean completed) {
+        this.id = id;
+        this.title = title;
+        this.completed = completed;
+    }
 
 
     public Long getId() {
@@ -30,4 +40,13 @@ public class TaskResponsedto {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }
+

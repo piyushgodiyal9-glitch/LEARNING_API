@@ -7,6 +7,8 @@ public class TaskRequestdto {
     @NotBlank(message = "Title cannot be empty")
     private String title;
 
+    private long userId;
+
     private boolean completed;
 
     public String getTitle() {
@@ -23,5 +25,13 @@ public class TaskRequestdto {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
