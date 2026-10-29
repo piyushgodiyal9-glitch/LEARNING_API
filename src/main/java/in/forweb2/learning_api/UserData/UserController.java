@@ -34,4 +34,5 @@ public class UserController {
             @PathVariable Long id) {
         return taskService.getTasksByUserId(id);
     }
+
 }

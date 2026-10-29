@@ -2,6 +2,10 @@ package in.forweb2.learning_api.TaskData;
 
 import in.forweb2.learning_api.dto.TaskRequestdto;
 import in.forweb2.learning_api.dto.TaskResponsedto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
@@ -24,6 +28,25 @@ public class TaskController {
     @GetMapping("/tasks")
     public List<TaskResponsedto> getAllTasks() {
         return taskService.getAllTask();
+    }
+
+    @GetMapping("/tasks/page")
+    public Page<Task> PageSort(
+
+            @RequestParam int page,
+
+            @RequestParam int size,
+
+            @RequestParam String sortBy,
+
+            @RequestParam String direction){
+
+        return taskService.PageSort(
+                page,
+                size,
+                sortBy,
+                direction
+        );
     }
 
     @GetMapping("/tasks/{id}")

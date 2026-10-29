@@ -5,7 +5,11 @@ import in.forweb2.learning_api.UserData.UserRepository;
 import in.forweb2.learning_api.dto.TaskResponsedto;
 import in.forweb2.learning_api.dto.TaskRequestdto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +111,27 @@ public class TaskService {
 
     public List<Task> getTasksByUserId(Long userId) {
         return taskRepository.findByUserId(userId);
+    }
+
+    public Page<Task> PageSort(
+            int page,
+            int size,
+            String sortBy,
+            String direction){
+
+        Sort sort =
+                direction.equalsIgnoreCase("desc")
+                        ? Sort.by(sortBy).descending()
+                        : Sort.by(sortBy).ascending();
+
+        Pageable pageable =
+                PageRequest.of(
+                        page,
+                        size,
+                        sort
+                );
+
+        return taskRepository.findAll(pageable);
     }
 
 }
